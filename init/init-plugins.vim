@@ -224,7 +224,7 @@ if index(g:bundle_group, 'tags') >= 0
 	let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 	" 使用 universal-ctags 的话需要下面这行，请反注释
-	" let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
+	let g:gutentags_ctags_extra_args += ['--output-format=e-ctags']
 
 	" 禁止 gutentags 自动链接 gtags 数据库
 	let g:gutentags_auto_add_gtags_cscope = 0
@@ -369,8 +369,8 @@ if index(g:bundle_group, 'ale') >= 0
 
 	" 编辑不同文件类型需要的语法检查器
 	let g:ale_linters = {
-				\ 'c': ['gcc', 'cppcheck'], 
-				\ 'cpp': ['gcc', 'cppcheck'], 
+				\ 'c': ['clang', 'cppcheck'], 
+				\ 'cpp': ['clang', 'cppcheck'], 
 				\ 'python': ['flake8', 'pylint'], 
 				\ 'lua': ['luac'], 
 				\ 'go': ['go build', 'gofmt'],
@@ -394,17 +394,19 @@ if index(g:bundle_group, 'ale') >= 0
 	let g:ale_python_flake8_options = '--conf='.s:lintcfg('flake8.conf')
 	let g:ale_python_pylint_options = '--rcfile='.s:lintcfg('pylint.conf')
 	let g:ale_python_pylint_options .= ' --disable=W'
-	let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-	let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+	let g:ale_c_clang_options = '-Wall -O2 -std=c99'
+	let g:ale_cpp_clang_options = '-Wall -O2 -std=c++14'
 	let g:ale_c_cppcheck_options = ''
 	let g:ale_cpp_cppcheck_options = ''
 
 	let g:ale_linters.text = ['textlint', 'write-good', 'languagetool']
 
 	" 如果没有 gcc 只有 clang 时（FreeBSD）
-	if executable('gcc') == 0 && executable('clang')
-		let g:ale_linters.c += ['clang']
-		let g:ale_linters.cpp += ['clang']
+	if executable('gcc') && executable('clang') == 0
+		let g:ale_linters.c += ['gcc']
+		let g:ale_linters.cpp += ['gcc']
+		let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+		let g:ale_gcc_clang_options = '-Wall -O2 -std=c++14'
 	endif
 endif
 
