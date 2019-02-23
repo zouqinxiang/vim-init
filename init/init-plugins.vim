@@ -19,6 +19,7 @@ if !exists('g:bundle_group')
 	let g:bundle_group += ['leaderf']
 endif
 
+let g:bundle_group += ['ycm']
 
 "----------------------------------------------------------------------
 " 计算当前 vim-init 的子路径
@@ -32,9 +33,15 @@ endfunc
 
 
 "----------------------------------------------------------------------
-" 在 ~/.vim/bundles 下安装插件
+" 在 ~/.vim/bundles 下安装插件  windows 可以指定为其它目录
 "----------------------------------------------------------------------
-call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
+if has('win32unix')
+	call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
+elseif has('win32') || has('win64')
+	call plug#begin(get(g:, 'bundle_home', '$VIM/vim-bundles'))
+else
+	call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
+endif
 
 
 "----------------------------------------------------------------------
@@ -411,6 +418,13 @@ if index(g:bundle_group, 'echodoc') >= 0
 	let g:echodoc#enable_at_startup = 1
 endif
 
+"----------------------------------------------------------------------
+" YCM c++ 补全插件
+"----------------------------------------------------------------------
+
+if index(g:bundle_group, 'echodoc') >= 0
+	Plug 'Valloric/YouCompleteMe'
+endif
 
 "----------------------------------------------------------------------
 " LeaderF：CtrlP / FZF 的超级代替者，文件模糊匹配，tags/函数名 选择
