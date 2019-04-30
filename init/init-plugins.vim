@@ -271,7 +271,8 @@ if index(g:bundle_group, 'filetypes') >= 0
 	Plug 'tbastos/vim-lua', { 'for': 'lua' }
 
 	" C++ 语法高亮增强，支持 11/14/17 标准
-	Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
+	"Plug 'octol/vim-cpp-enhanced-highlight', { 'for': ['c', 'cpp'] }
+	Plug  'bfrg/vim-cpp-modern', {'for' : ['c' , 'cpp']}
 
 	" 额外语法文件
 	Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
