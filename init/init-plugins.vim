@@ -158,9 +158,17 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	" 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
 	Plug 'terryma/vim-expand-region'
-
+	
 	" 快速文件搜索
-	Plug 'junegunn/fzf'
+	if has('win32unix')
+		Plug 'junegunn/fzf'
+	elseif has('win32') || has('win64')
+		Plug 'junegunn/fzf'
+    else 
+		Plug 'junegunn/fzf' , { 'dir': '~/.fzf', 'do': './install --all' }
+	endif
+
+	"Plug 'junegunn/fzf'
 
 	" 给不同语言提供字典补全，插入模式下 c-x c-k 触发
 	Plug 'asins/vim-dict'
