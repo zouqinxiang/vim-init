@@ -58,8 +58,8 @@ if has('gui_running')
         if has("directx")
             set renderoptions=type:directx
         endif
-		set guifont=Consolas:h12:cANSI:qDRAFT
-        set guifontwide=Microsoft_YaHei_Mono:h12:cANSI:qDRAFT
+		set guifont=Consolas:h14:cANSI:qDRAFT
+        set guifontwide=Microsoft_YaHei_Mono:h14:cANSI:qDRAFT
 	elseif has('mac') || has('macunix')
 		set guifont=Consolas:h16
 	else
