@@ -50,7 +50,12 @@ set background=dark
 set t_Co=256
 
 " 设置颜色主题，会在所有 runtimepaths 的 colors 目录寻找同名配置
-color Tomorrow-Night
+"color Tomorrow-Night
+color no_quarter
+"color earendel
+"color desert256
+"color slate2
+"
 
 if has('gui_running')
 	if has('win32') || has('win64')

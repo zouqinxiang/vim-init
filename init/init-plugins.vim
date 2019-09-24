@@ -438,8 +438,38 @@ endif
 "----------------------------------------------------------------------
 
 if index(g:bundle_group, 'echodoc') >= 0
-	Plug 'Valloric/YouCompleteMe'
+	"Plug 'Valloric/YouCompleteMe'
 endif
+
+"----------------------------------------------------------------------
+"coc lsp
+"----------------------------------------------------------------------
+
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+set signcolumn=yes
+set shortmess+=c
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+set updatetime=300
+autocmd CursorHold * silent call CocActionAsync('highlight')
+au CursorHoldI * sil call CocActionAsync('showSignatureHelp')
 
 "----------------------------------------------------------------------
 " LeaderF：CtrlP / FZF 的超级代替者，文件模糊匹配，tags/函数名 选择
@@ -562,18 +592,18 @@ call plug#end()
 let g:ycm_add_preview_to_completeopt = 0
 
 " 禁用诊断功能：我们用前面更好用的 ALE 代替
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_complete_in_strings=1
-let g:ycm_key_invoke_completion = '<c-z>'
-set completeopt=menu,menuone,noselect
+"let g:ycm_show_diagnostics_ui = 0
+"let g:ycm_server_log_level = 'info'
+"let g:ycm_min_num_identifier_candidate_chars = 2
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_complete_in_strings=1
+"let g:ycm_key_invoke_completion = '<c-z>'
+"set completeopt=menu,menuone,noselect
 
 " noremap <c-z> <NOP>
 
 " 两个字符自动触发语义补全
-let g:ycm_semantic_triggers =  {
+"let g:ycm_semantic_triggers =  {
 			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
 			\ 'cs,lua,javascript': ['re!\w{2}'],
 			\ }
@@ -582,7 +612,7 @@ let g:ycm_semantic_triggers =  {
 "----------------------------------------------------------------------
 " Ycm 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
 "----------------------------------------------------------------------
-let g:ycm_filetype_whitelist = { 
+"let g:ycm_filetype_whitelist = { 
 			\ "c":1,
 			\ "cpp":1, 
 			\ "objc":1,
