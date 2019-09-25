@@ -73,6 +73,17 @@ if has('gui_running')
 	endif
 endif
 
+autocmd GUIEnter * simalt ~x 
+set guioptions-=m " 隐藏菜单栏 
+set guioptions-=T " 隐藏工具栏 
+set guioptions-=L " 隐藏左侧滚动条 
+set guioptions-=r " 隐藏右侧滚动条 
+set guioptions-=b " 隐藏底部滚动条
+set guioptions-=R
+set guioptions-=l
+set guifont=Consolas:h14:cANSI:qDRAFT
+set guifontwide=Microsoft_YaHei_Mono:h14:cANSI:qDRAFT
+
 
 "----------------------------------------------------------------------
 " 状态栏设置
@@ -308,5 +319,8 @@ set tabline=%!Vim_NeatTabLine()
 set guitablabel=%{Vim_NeatGuiTabLabel()}
 set guitabtooltip=%{Vim_NeatGuiTabTip()}
 
-
+"----------------------------------------------------------------------
+"fillchar 设置
+"----------------------------------------------------------------------
+set fillchars+=vert:\ 
 
