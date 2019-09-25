@@ -66,8 +66,8 @@ color no_quarter
 "color slate2
 "
 
-if has('gui_running')
-	if has('win32') || has('win64')
+if has('gui_running') || has('nvim')
+	if has('win32') || has('win64') 
 		set guioptions+=!
         if has("directx")
             set renderoptions=type:directx
@@ -83,6 +83,7 @@ if has('gui_running')
         "set guifontwide=YaHei_Mono_Hybird_Consolas\ 12.5
 	endif
 endif
+
 
 set guioptions-=m " 隐藏菜单栏 
 set guioptions-=T " 隐藏工具栏 
