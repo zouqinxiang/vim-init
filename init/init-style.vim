@@ -65,6 +65,7 @@ if has('gui_running')
         endif
 		set guifont=Consolas:h14:cANSI:qDRAFT
         set guifontwide=Microsoft_YaHei_Mono:h14:cANSI:qDRAFT
+		autocmd GUIEnter * simalt ~x 
 	elseif has('mac') || has('macunix')
 		set guifont=Consolas:h16
 	else
@@ -73,7 +74,6 @@ if has('gui_running')
 	endif
 endif
 
-autocmd GUIEnter * simalt ~x 
 set guioptions-=m " 隐藏菜单栏 
 set guioptions-=T " 隐藏工具栏 
 set guioptions-=L " 隐藏左侧滚动条 
