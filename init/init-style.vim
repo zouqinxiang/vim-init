@@ -66,7 +66,7 @@ color no_quarter
 "color slate2
 "
 
-if has('gui_running') || has('nvim')
+if has('gui_running')
 	if has('win32') || has('win64') 
 		set guioptions+=!
         if has("directx")
@@ -84,6 +84,13 @@ if has('gui_running') || has('nvim')
 	endif
 endif
 
+if exists('g:GuiLoaded')
+	if has('win32') || has('win64')
+		execute 'GuiFont! ' . "Consolas:h14"
+	else
+		execute 'GuiFont! ' . "Source Code Pro:h14"
+	endif 
+endif
 
 set guioptions-=m " 隐藏菜单栏 
 set guioptions-=T " 隐藏工具栏 
