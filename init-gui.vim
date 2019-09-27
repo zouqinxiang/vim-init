@@ -1,4 +1,9 @@
-if has('gui_running') && !exists('g:GuiLoaded')
+let nvim_qt = 0
+if exists('g:GuiLoaded')
+	let nvim_qt = 1
+	echo "nvim-qt"
+endif
+if has('gui_running') && nvim_qt != 1
 	if has('win32') || has('win64') 
 		set guioptions+=!
         if has("directx")
@@ -8,7 +13,7 @@ if has('gui_running') && !exists('g:GuiLoaded')
         set guifontwide=Microsoft_YaHei_Mono:h14:cANSI:qDRAFT
 		autocmd GUIEnter * simalt ~x 
 	elseif has('mac') || has('macunix')
-		set guifont=Consolas:h16
+		set guifont=Consolas:h14
 	else
 		"set guifont=Consolas\ 12
 		execute 'set guifont=Noto\ Mono\ Regular\ 14,Menlo\ Regular\ 14,Consolas\ Regular\ 14,Courier\ New\ Regular\ 14'
@@ -18,10 +23,11 @@ endif
 
 if exists('g:GuiLoaded')
 	GuiPopupmenu  0
+	echo "in guiloaded"
 	if has('win32') || has('win64')
 		execute 'GuiFont! ' . "Consolas:h14"
 	else
-		execute 'GuiFont! ' . "Source Code Pro:h14"
+		execute 'GuiFont! ' . "Consolas:h14"
 	endif 
 endif
 
