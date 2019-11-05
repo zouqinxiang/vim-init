@@ -104,6 +104,8 @@ if index(g:bundle_group, 'basic') >= 0
 	" 一次性安装一大堆 colorscheme
 	Plug 'flazz/vim-colorschemes'
 
+	Plug 'connorholyday/vim-snazzy'
+
 	" 支持库，给其他插件用的函数库
 	Plug 'xolox/vim-misc'
 
