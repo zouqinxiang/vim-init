@@ -614,7 +614,7 @@ let g:ycm_add_preview_to_completeopt = 0
 "----------------------------------------------------------------------
 " Ycm 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
 "----------------------------------------------------------------------
-"let g:ycm_filetype_whitelist = { 
+let g:ycm_filetype_whitelist = { 
 			\ "c":1,
 			\ "cpp":1, 
 			\ "objc":1,
