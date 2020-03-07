@@ -124,6 +124,12 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" 提供基于 TAGS 的定义预览，函数参数预览，quickfix 预览
 	Plug 'skywind3000/vim-preview'
+	
+	" glsl 支持
+	Plug 'tikhomirov/vim-glsl'
+	
+	" hlsl 支持
+	Plug 'beyondmarc/hlsl.vim'
 
 	" Git 支持
 	Plug 'tpope/vim-fugitive'
