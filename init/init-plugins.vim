@@ -345,6 +345,16 @@ if index(g:bundle_group, 'nerdtree') >= 0
 	noremap <space>nt :NERDTreeToggle<cr>
 endif
 
+if index(g:bundle_group, 'defx') >= 0
+	if has('nvim')
+		Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+	else
+		Plug 'Shougo/defx.nvim'
+		Plug 'roxma/nvim-yarp'
+		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
+endif
+
 
 "----------------------------------------------------------------------
 " LanguageTool 语法检查
