@@ -25,7 +25,8 @@ if exists('g:GuiLoaded')
 	GuiPopupmenu  0
 	echo "in guiloaded"
 	if has('win32') || has('win64')
-		execute 'GuiFont! ' . "Consolas:h14"
+		" execute 'GuiFont! ' . "Consolas:h14"
+		execute 'GuiFont! ' . "Cascadia\ Code:h14"
 	else
 		execute 'GuiFont! ' . "Consolas:h14"
 	endif 
