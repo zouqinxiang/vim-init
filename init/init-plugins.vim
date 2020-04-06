@@ -226,6 +226,7 @@ if index(g:bundle_group, 'tags') >= 0
 
 	" 默认禁用自动生成
 	let g:gutentags_modules = [] 
+	let g:gutentags_enabled = 0
 
 	" 如果有 ctags 可执行就允许动态生成 ctags 文件
 	if executable('ctags')
