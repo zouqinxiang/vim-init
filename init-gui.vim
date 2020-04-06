@@ -9,7 +9,7 @@ if has('gui_running') && nvim_qt != 1
         if has("directx")
             set renderoptions=type:directx
         endif
-		set guifont=Consolas:h14:cANSI:qDRAFT
+		set guifont=Consolas:h13:cANSI:qDRAFT
         set guifontwide=Microsoft_YaHei_Mono:h14:cANSI:qDRAFT
 		autocmd GUIEnter * simalt ~x 
 	elseif has('mac') || has('macunix')
@@ -25,10 +25,10 @@ if exists('g:GuiLoaded')
 	GuiPopupmenu  0
 	echo "in guiloaded"
 	if has('win32') || has('win64')
-		" execute 'GuiFont! ' . "Consolas:h14"
-		execute 'GuiFont! ' . "Cascadia\ Code:h14"
+		" execute 'GuiFont! ' . "Consolas:h13"
+		execute 'GuiFont! ' . "Cascadia\ Code:h13"
 	else
-		execute 'GuiFont! ' . "Consolas:h14"
+		execute 'GuiFont! ' . "Consolas:h13"
 	endif 
 endif
 
