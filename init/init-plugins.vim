@@ -130,6 +130,9 @@ if index(g:bundle_group, 'basic') >= 0
 	
 	" hlsl 支持
 	Plug 'beyondmarc/hlsl.vim'
+	
+	" cmake 支持
+	Plug 'pboettch/vim-cmake-syntax'
 
 	" Git 支持
 	Plug 'tpope/vim-fugitive'
