@@ -468,7 +468,7 @@ endif
 "coc lsp
 "----------------------------------------------------------------------
 
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim' , {'do': 'yarn install --frozen-lockfile'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 set signcolumn=yes
 set shortmess+=c
