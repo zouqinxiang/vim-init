@@ -469,6 +469,7 @@ endif
 "----------------------------------------------------------------------
 
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 set signcolumn=yes
 set shortmess+=c
 " Use `[g` and `]g` to navigate diagnostics
