@@ -27,6 +27,7 @@ if exists('g:GuiLoaded')
 	if has('win32') || has('win64')
 		" execute 'GuiFont! ' . "Consolas:h13"
 		execute 'GuiFont! ' . "Cascadia\ Code:h13"
+		map! <S-Insert> <C-R>+
 	else
 		execute 'GuiFont! ' . "Consolas:h13"
 	endif 
