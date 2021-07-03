@@ -15,7 +15,7 @@ if has('gui_running') && nvim_qt != 1
 	elseif has('mac') || has('macunix')
 		set guifont=Consolas:h14
 	else
-		set guifont=Source\ Code\ Pro\ Regular\ 12
+		set guifont=Source\ Code\ Pro\ Regular\ 14
 		"execute 'set guifont=Noto\ Mono\ Regular\ 14,Menlo\ Regular\ 14,Consolas\ Regular\ 14,Courier\ New\ Regular\ 14'
         "set guifontwide=YaHei_Mono_Hybird_Consolas\ 12.5
 	endif
