@@ -477,6 +477,39 @@ Plug 'neoclide/coc.nvim' , {'do': 'yarn install --frozen-lockfile'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 set signcolumn=yes
 set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" " diagnostics appear/become resolved.
+if has("nvim-0.5.0") || has("patch-8.1.1564")
+	" Recently vim can merge signcolumn and number column into one
+	set signcolumn=number
+else
+    set signcolumn=yes
+endif
+
+" Use tab for trigger completion with characters ahead and navigate.
+" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" " other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+	inoremap <silent><expr> <c-space> coc#refresh()
+else
+	inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+
+
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
@@ -487,37 +520,40 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
 " ccls coc lsp extensions
 " bases
-nn <silent> xb :call CocLocations('ccls','$ccls/inheritance')<cr>
+"nn <silent> xb :call CocLocations('ccls','$ccls/inheritance')<cr>
 " bases of up to 3 levels
-nn <silent> xB :call CocLocations('ccls','$ccls/inheritance',{'levels':3})<cr>
+"nn <silent> xB :call CocLocations('ccls','$ccls/inheritance',{'levels':3})<cr>
 " derived
-nn <silent> xd :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
+"nn <silent> xd :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
 " derived of up to 3 levels
-nn <silent> xD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true,'levels':3})<cr>
+"nn <silent> xD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true,'levels':3})<cr>
 
 " caller
-nn <silent> xc :call CocLocations('ccls','$ccls/call')<cr>
+"nn <silent> xc :call CocLocations('ccls','$ccls/call')<cr>
 " callee
-nn <silent> xC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
+"nn <silent> xC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
 
 " $ccls/member
 " member variables / variables in a namespace
-nn <silent> xm :call CocLocations('ccls','$ccls/member')<cr>
+"nn <silent> xm :call CocLocations('ccls','$ccls/member')<cr>
 " member functions / functions in a namespace
-nn <silent> xf :call CocLocations('ccls','$ccls/member',{'kind':3})<cr>
+"nn <silent> xf :call CocLocations('ccls','$ccls/member',{'kind':3})<cr>
 " nested classes / types in a namespace
-nn <silent> xs :call CocLocations('ccls','$ccls/member',{'kind':2})<cr>
+"nn <silent> xs :call CocLocations('ccls','$ccls/member',{'kind':2})<cr>
 
-nmap <silent> xt <Plug>(coc-type-definition)<cr>
-nn <silent> xv :call CocLocations('ccls','$ccls/vars')<cr>
-nn <silent> xV :call CocLocations('ccls','$ccls/vars',{'kind':1})<cr>
+"nmap <silent> xt <Plug>(coc-type-definition)<cr>
+"nn <silent> xv :call CocLocations('ccls','$ccls/vars')<cr>
+"nn <silent> xV :call CocLocations('ccls','$ccls/vars',{'kind':1})<cr>
 
-nn <silent><buffer> <C-l> :call CocLocations('ccls','$ccls/navigate',{'direction':'D'})<cr>
-nn <silent><buffer> <C-k> :call CocLocations('ccls','$ccls/navigate',{'direction':'L'})<cr>
-nn <silent><buffer> <C-j> :call CocLocations('ccls','$ccls/navigate',{'direction':'R'})<cr>
-nn <silent><buffer> <C-h> :call CocLocations('ccls','$ccls/navigate',{'direction':'U'})<cr>
+"nn <silent><buffer> <C-l> :call CocLocations('ccls','$ccls/navigate',{'direction':'D'})<cr>
+"nn <silent><buffer> <C-k> :call CocLocations('ccls','$ccls/navigate',{'direction':'L'})<cr>
+"nn <silent><buffer> <C-j> :call CocLocations('ccls','$ccls/navigate',{'direction':'R'})<cr>
+"nn <silent><buffer> <C-h> :call CocLocations('ccls','$ccls/navigate',{'direction':'U'})<cr>
 
 
 " Use K to show documentation in preview window
