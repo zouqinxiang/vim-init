@@ -102,7 +102,7 @@ if index(g:bundle_group, 'basic') >= 0
 	Plug 'mhinz/vim-startify'
 
 	" 一次性安装一大堆 colorscheme
-	Plug 'flazz/vim-colorschemes'
+	Plug 'zouqinxiang/vim-colorschemes'
 
 	Plug 'connorholyday/vim-snazzy'
 
